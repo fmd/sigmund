@@ -9,7 +9,7 @@ import (
 
 /*
 
-	HOW BAZAAR SHOULD WORK:
+	HOW SIGMUND SHOULD WORK:
 
 	-- One Docker Host, 3 Containers --
 
@@ -92,7 +92,7 @@ func (s *Server) Init() *Server {
 
 func (s *Server) ParseFlags() {
 	flag.BoolVar(&s.IsDaemon, "d", false, "Daemonize the server.")
-	flag.StringVar(&s.Bridge, "i", "baz0", "Name of the network bridge to create for Sigmund.")
+	flag.StringVar(&s.Bridge, "i", "sig0", "Name of the network bridge to create for Sigmund.")
 }
 
 func (s *Server) Serve() error {

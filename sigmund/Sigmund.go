@@ -6,7 +6,6 @@ package sigmund
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"errors"
 )
@@ -58,8 +57,8 @@ func (b *Sigmund) CreateHost(path string) (*Host, error) {
 	return host, nil
 }
 
-func (b *Sigmund) GetHost(hostname string) *Host, error {
-	exists, err := b.Redis.HostExists()
+func (b *Sigmund) GetHost(hostname string) (*Host, error) {
+	exists, err := b.Redis.HostExists(hostname)
 	if err != nil {
 		return nil, err
 	}
@@ -76,6 +75,9 @@ func (b *Sigmund) GetHost(hostname string) *Host, error {
 }
 
 func (b *Sigmund) RemoveHost(hostname string) error {
-	host := b.GetHost(hostname)
+	host, err := b.GetHost(hostname)
+	if err != nil {
+		return err
+	}
 	return host.Remove()
 }

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/garyburd/redigo/redis"
 	"strings"
+	"errors"
 )
 
 type RedisClient struct {
@@ -115,7 +116,7 @@ func (r *RedisClient) HostExists(hostname string) (bool, error) {
 	return exists, nil
 }
 
-func (r *RedisClient) EnsureExists(hostname, string) error {
+func (r *RedisClient) EnsureExists(hostname string) error {
  		exists, err := r.HostExists(hostname)
  		if err != nil {
  			return err
@@ -201,12 +202,12 @@ func (r *RedisClient) AddOutputs(hostname string, data map[string]interface{}) e
  * Getting a Host from Redis
  */
 
- func (r *RedisClient) GetConn(hostname string) string, error {
+ func (r *RedisClient) GetConn(hostname string) (string, error) {
  		if err := r.EnsureExists(hostname); err != nil {
- 			return err
+ 			return "", err
  		}
 
- 		return nil
+ 		return "", nil
  }
 
 /**
