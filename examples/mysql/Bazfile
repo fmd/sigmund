@@ -1,0 +1,24 @@
+{
+    "name" : "baz-mysql",
+
+    "conn" : {
+      "host" : "localhost"
+    },
+    
+    "data" : {
+
+    },
+
+    "inputs" : {
+        
+    },
+
+    "outputs" : {
+        "mysql-flask" : {
+          "port" : "3306",
+          "name" : "flask",
+          "user" : "root",
+          "pass" : "root"
+        }
+    }
+}
